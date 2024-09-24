@@ -1,8 +1,11 @@
-BÀI TẬP LỚN:  
+**BÀI TẬP LỚN:**  
+----------------
 Môn: Công nghệ phần mềm  
-Giảng viên hướng dẫn: 	Nguyễn Thị Thu Hương  
+Giảng viên hướng dẫn: Nguyễn Thị Thu Hương
+----------------
 Đề tài: Website pass đồ cũ  
 Nhóm 65TTNT_4  
+  
 Thành viên:  
 Hồ Đức Minh  
 Lưu Minh Quân  
