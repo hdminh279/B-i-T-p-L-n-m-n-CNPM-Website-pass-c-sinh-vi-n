@@ -1,0 +1,115 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block upload %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Sản Phẩm</title>
+    <style>
+        /* Định dạng bảng và các thành phần */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        /* Định dạng nút Đăng */
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Nhập Thông Tin Sản Phẩm</h2>
+    <form id="productForm">
+        <table>
+            <tr>
+                <th>Ảnh Sản Phẩm</th>
+                <td>
+                    <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                </td>
+            </tr>
+            <tr>
+                <th>Tên Sản Phẩm</th>
+                <td>
+                    <input type="text" id="productName" name="productName" required>
+                </td>
+            </tr>
+            <tr>
+                <th>Mô Tả Sản Phẩm</th>
+                <td>
+                    <textarea id="productDesc" name="productDesc" rows="4" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>Loại Hàng</th>
+                <td>
+                    <select id="productType" name="productType" required>
+                        <option value="">Chọn loại hàng</option>
+                        <option value="1">Loại 1</option>
+                        <option value="2">Loại 2</option>
+                        <option value="3">Loại 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Giá Tiền (VND)</th>
+                <td>
+                    <input type="number" id="productPrice" name="productPrice" min="0" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Đăng">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        // Xử lý sự kiện submit của biểu mẫu
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của form
+
+            // Kiểm tra và lấy giá trị các trường nhập liệu
+            var productImage = document.getElementById('productImage').files[0];
+            var productName = document.getElementById('productName').value.trim();
+            var productDesc = document.getElementById('productDesc').value.trim();
+            var productType = document.getElementById('productType').value;
+            var productPrice = document.getElementById('productPrice').value;
+
+            // Kiểm tra nếu tất cả các trường đều được điền
+            if (productImage && productName && productDesc && productType && productPrice) {
+                // Hiển thị thông báo đăng thành công
+                alert('Đăng thành công!');
+                // Reset biểu mẫu
+                this.reset();
+            } else {
+                // Hiển thị thông báo lỗi nếu có trường chưa điền
+                alert('Vui lòng điền đầy đủ thông tin.');
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+{% endblock upload %}

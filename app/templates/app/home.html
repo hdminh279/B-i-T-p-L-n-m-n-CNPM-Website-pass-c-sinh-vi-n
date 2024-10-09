@@ -1,0 +1,192 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block banner_group %}
+<div class="container">
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th colspan="6" class="text-left">Danh Mục</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/ao.png' %}" alt="Đồng phục" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Đồng phục
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/sach.png' %}" alt="Sách, vở" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Sách, vở
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/giay.png' %}" alt="Giày dép" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Giày dép
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/dodung.png' %}" alt="Đồ dùng" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Đồ dùng
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/bong.png' %}" alt="Thể thao" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Thể thao
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/pk.png' %}" alt="Phụ kiện" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Phụ kiện
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/mtinh.png' %}" alt="Máy tính, laptop" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Máy tính, laptop
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="text-decoration-none">
+                        <img src="{% static 'app/images/bd.png' %}" alt="Nhà cửa, đời sống" class="img-fluid" style="max-width: 50px; height: auto;">
+                        <br>Nhà cửa, đời sống
+                    </a>
+                </td>
+                <td colspan="4"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+  
+{%endblock banner_group%}
+{% block main-content %}
+<style>
+    .card-img-top {
+        height: 200px; /* Đặt chiều cao cố định cho tất cả hình ảnh */
+        object-fit: cover; /* Giữ tỷ lệ hình ảnh mà không làm biến dạng */
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <div class="card mb-4">
+                <img src="{% static 'app/images/butchim.png' %}" class="card-img-top" alt="Bút chì">
+                <div class="card-body">
+                    <h5 class="card-title">Bút chì</h5>
+                    <p class="card-text">Bút chì mới, chất lượng tốt, thích hợp cho học sinh và sinh viên.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="btn btn-primary me-3">Thêm vào giỏ hàng</a>
+                            <a href="#" class="btn btn-secondary">Xem</a>
+                            <span class="text-success fw-bold ms-2">5.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card mb-4">
+                <img src="{% static 'app/images/maytinh.png' %}" class="card-img-top" alt="máy tính">
+                <div class="card-body">
+                    <h5 class="card-title">Máy Tính</h5>
+                    <p class="card-text">Máy tính mới, chất lượng tốt, thích hợp cho học sinh và sinh viên.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="btn btn-primary me-3">Thêm vào giỏ hàng</a>
+                            <a href="#" class="btn btn-secondary">Xem</a>
+                            <span class="text-success fw-bold ms-2">250.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card mb-4">
+                <img src="{% static 'app/images/bongchuyen.png' %}" class="card-img-top" alt="Bóng chuyền">
+                <div class="card-body">
+                    <h5 class="card-title">Bóng chuyền</h5>
+                    <p class="card-text">Bóng chuyền mới, chất lượng tốt, thích hợp cho học sinh và sinh viên.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="btn btn-primary me-3">Thêm vào giỏ hàng</a>
+                            <a href="#" class="btn btn-secondary">Xem</a>
+                            <span class="text-success fw-bold ms-2">300.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <div class="card mb-4">
+                <img src="{% static 'app/images/butchim.png' %}" class="card-img-top" alt="Bút chì">
+                <div class="card-body">
+                    <h5 class="card-title">Bút chì</h5>
+                    <p class="card-text">Bút chì mới, chất lượng tốt, thích hợp cho học sinh và sinh viên.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="btn btn-primary me-3">Thêm vào giỏ hàng</a>
+                            <a href="#" class="btn btn-secondary">Xem</a>
+                            <span class="text-success fw-bold ms-2">5.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card mb-4">
+                <img src="{% static 'app/images/maytinh.png' %}" class="card-img-top" alt="máy tính">
+                <div class="card-body">
+                    <h5 class="card-title">Máy Tính</h5>
+                    <p class="card-text">Máy tính mới, chất lượng tốt, thích hợp cho học sinh và sinh viên.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="btn btn-primary me-3">Thêm vào giỏ hàng</a>
+                            <a href="#" class="btn btn-secondary">Xem</a>
+                            <span class="text-success fw-bold ms-2">250.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card mb-4">
+                <img src="{% static 'app/images/bongchuyen.png' %}" class="card-img-top" alt="Bóng chuyền">
+                <div class="card-body">
+                    <h5 class="card-title">Bóng chuyền</h5>
+                    <p class="card-text">Bóng chuyền mới, chất lượng tốt, thích hợp cho học sinh và sinh viên.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <a href="#" class="btn btn-primary me-3">Thêm vào giỏ hàng</a>
+                            <a href="#" class="btn btn-secondary">Xem</a>
+                            <span class="text-success fw-bold ms-2">300.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock main-content %}

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="{% static 'app/css/dangky.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="register-form">
+            <img src="./imagine/mu.jpg" alt="Graduation Hat" class="icon">
+            <h2>Đăng Ký</h2>
+            <form action="#">
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Số điện thoại" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                <input type="password" placeholder="Xác nhận mật khẩu" required>
+                <button type="submit">ĐĂNG KÝ</button>
+                <div class="links">
+                    <a href="login.html">Đã có tài khoản? <span class="login">ĐĂNG NHẬP</span></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

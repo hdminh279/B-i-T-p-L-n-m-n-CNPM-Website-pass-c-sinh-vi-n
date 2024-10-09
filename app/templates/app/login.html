@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="{% static 'app/css/login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <img src="./imagine/mu.jpg" alt="" class="icon">
+            <h2>Đăng Nhập</h2>
+            <form action= "home.html">
+                <input type="text" placeholder="Email/Tên đăng nhập" required>
+                <input type="password" placeholder="Mật Khẩu" required>
+                <button type="submit">ĐĂNG NHẬP</button>
+                <div class="links">
+                    <a href="/registration.html">Người dùng mới? <span class="register">ĐĂNG KÍ</span></a>
+                    <a href="#">Quên mật khẩu</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
