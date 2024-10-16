@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block watch %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="{% static 'app/css/watch.css' %}">
+</head>
+<body>
+    <!-- Thông tin sản phẩm và phần chat -->
+    <div class="content-container">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="{{product.ImageURL}}" alt="Ảnh sản phẩm">
+            </div>
+            <div class="product-details">
+                <h2>{{product.name}}</h2>
+                <p><strong>12</strong> Đánh giá | <strong>51</strong> Đã bán</p>
+                <p class="rating">⭐ 4.8</p>
+                <p class="price">Giá tiền: <span>{{product.price |floatformat:0}}VNĐ</span></p>
+                <p>Mô tả sản phẩm</p>
+
+                <!-- Số lượng sản phẩm -->
+                <div class="quantity">
+                    <label for="quantity">Số lượng:</label>
+                    <button class="quantity-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button class="quantity-btn">+</button>
+                    <span class="stock-info">99 sản phẩm có sẵn</span>
+                </div>
+
+                <!-- Nút thêm vào giỏ hàng và mua ngay -->
+                <div class="action-buttons">
+                    <button class="btn-add-cart">🛒 Thêm vào giỏ hàng</button>
+                    <button class="btn-buy-now">Mua ngay</button>
+                    <button id="chat-button" class="btn-chat">💬 Chat với người bán hàng</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phần chat (Ẩn mặc định) -->
+        <div id="chat-container" class="chat-container hidden">
+            <h3>Người bán <button id="close-chat" class="close-btn">✖</button></h3>
+            <div class="chat-box">
+                <div class="chat-message">
+                    <p><strong>Người bán:</strong> Xin chào! Tôi có thể giúp gì cho bạn?</p>
+                </div>
+                <div class="chat-message user">
+                    <p><strong>Bạn:</strong> Tôi muốn biết thêm thông tin về sản phẩm này.</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Nhập tin nhắn...">
+                <button>Gửi</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'app/js/watch.js' %}"></script>
+</body>
+</html>
+{% endblock watch %}

@@ -1,0 +1,86 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/lsgd.css' %}">
+    <title>Lịch sử giao dịch </title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="icon">
+                <a href="/home"><img src="{% static 'app/images/home.png' %}" alt="Home"></a>
+            </div>
+            <ul>
+                <li>
+                    <a href="/don-hang">
+                        <img src="{% static 'app/images/xe.png' %}" alt="Order Icon"> Đơn hàng
+                    </a>
+                </li>
+                <li>
+                    <a href="/tin-da-dang">
+                        <img src="{% static 'app/images/tindang.png' %}" alt="Posted Icon"> Tin đã đăng
+                    </a>
+                </li>
+                <li>
+                    <a href="/thiet-lap-tai-khoan">
+                        <img src="{% static 'app/images/setting.png' %}" alt="Setting Icon"> Thiết lập tài khoản
+                    </a>
+                </li>
+                <li>
+                    <a href="/lich-su-giao-dich">
+                        <img src="{% static 'app/images/lsgd.png' %}" alt="History Icon"> Lịch sử giao dịch
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="user-info">
+                <div class="profile">
+                    <img src="{% static 'app/images/user.png' %}" alt="Profile Picture">
+                    <span>Tên người dùng</span>
+                </div>
+                <div class="location">
+                    <span>Hà Nội</span>
+                    <span>Người theo dõi: 0</span>
+                    <span>Đang theo dõi: 0</span>
+                </div>
+            </div>
+            
+            <h2>Lịch sử giao dịch</h2>
+            <div class="transaction-list">
+                <div class="transaction">
+                    <img src="{% static 'app/images/product.png' %}" alt="Product Image">
+                    <div class="transaction-info">
+                        <p>Tên sản phẩm</p>
+                        <p>Tình trạng: <span class="status completed">Đã hoàn thành</span></p>
+                        <p>Thành tiền: 47.000 VNĐ</p>
+                        <p>Ngày giao hàng: 31/12/2023</p>
+                        <p>Ngày nhận hàng: 1/1/2024</p>
+                    </div>
+                </div>
+                <div class="transaction">
+                    <img src="{% static 'app/images/product.png' %}" alt="Product Image">
+                    <div class="transaction-info">
+                        <p>Tên sản phẩm</p>
+                        <p>Tình trạng: <span class="status shipping">Đang giao hàng</span></p>
+                        <p>Thành tiền: 63.000 VNĐ</p>
+                    </div>
+                </div>
+                <div class="transaction">
+                    <img src="{% static 'app/images/product.png' %}" alt="Product Image">
+                    <div class="transaction-info">
+                        <p>Tên sản phẩm</p>
+                        <p>Tình trạng: <span class="status preparing">Người bán hàng đang chuẩn bị hàng</span></p>
+                        <p>Thành tiền: 63.000 VNĐ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

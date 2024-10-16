@@ -2,68 +2,113 @@
 {% load static %}
 {% block cart_content %}
 <div class="row">
-	<div class="col-lg-12">
-		<div class="box-element">
+    <div class="col-lg-12">
+        <div class="box-element">
 
-			<a class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Tiếp tục mua sắm</a>
+            <a class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Tiếp tục mua sắm</a>
 
-			<br><br>
-			<table class="table">
-				<tr>
-					<th><h5>Items: <strong>3</strong></h5></th>
-					<th><h5>Total: <strong>$42</strong></h5></th>
-					<th>
-						<a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Thanh toán</a>
-					</th>
-				</tr>
-			</table>
+            <br><br>
+            <table class="table">
+                <tr>
+                    <th><h5>Items: <strong id="item-count">{{order.get_cart_items}}</strong></h5></th>
+                    <th><h5>Total: <strong id="total-amount">{{order.get_cart_total}}</strong></h5></th>
+                    <th>
+                        <button id="checkout-button" style="float:right; margin:5px;" class="btn btn-success">Thanh toán</button>
+                    </th>
+                </tr>
+            </table>
 
-		</div>
-		<br>
-		<div class="container">
-			<!-- Tiêu đề bảng -->
-			<table class="table table-bordered text-center align-middle">
-				<thead>
-					<tr>
-						<th>Sản phẩm</th>
-						<th></th>
-						<th>Đơn giá</th>
-						<th>Số lượng</th>
-						<th>Số tiền</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- Hàng sản phẩm -->
-					<tr>
-						<td>
-							<img src="{% static 'app/images/mtinh.png' %}" alt="Máy tính, laptop" class="img-fluid" style="max-width: 50px; height: auto;">
-						</td>
-						<td>Máy tính</td>
-						<td>10.000.000</td>
-						<td>1</td>
-						<td>10.000.000</td>
-					</tr>
-					<tr>
-						<td>
-							<img src="{% static 'app/images/butchim.png' %}" alt="Bút chì" class="img-fluid" style="max-width: 50px; height: auto;">
-						</td>
-						<td>Bút chì</td>
-						<td>5.000</td>
-						<td>3</td>
-						<td>15.000</td>
-					</tr>
-					<tr>
-						<td>
-							<img src="{% static 'app/images/bongchuyen.png' %}" alt="Bóng chuyền" class="img-fluid" style="max-width: 50px; height: auto;">
-						</td>
-						<td>Bóng chuyền</td>
-						<td>300.000</td>
-						<td>1</td>
-						<td>300.000</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		
-		
+        </div>
+        <br>
+        <div class="container">
+            <!-- Tiêu đề bảng -->
+            <table class="table table-bordered text-center align-middle">
+                <thead>
+                    <tr>
+                        <th></th> <!-- Checkbox column -->
+                        <th>Sản phẩm</th>
+                        <th></th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Số tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Hàng sản phẩm -->
+                    {% for item in items %}
+                    <tr>
+                        <td>
+                            <!-- Cập nhật data-price bằng giá trị thực từ item.product.price -->
+                            <input type="checkbox" class="product-checkbox" data-price="{{ item.product.price }}">
+                        </td>
+                        <td>
+                            <img src="{{ item.product.ImageURL }}" alt="{{ item.product.name }}" class="img-fluid" style="max-width: 50px; height: auto;">
+                        </td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.price|floatformat:0 }}</td>
+                        <td>
+                            <!-- Cập nhật data-price trên input quantity để theo dõi đúng giá cho mỗi sản phẩm -->
+                            <input type="number" class="quantity" value="{{ item.quantity }}" min="1" style="width: 60px;" data-price="{{ item.product.price }}">
+                        </td>
+                        <td class="subtotal">{{ item.get_total|floatformat:0 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal QR code -->
+        <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="qrModalLabel">Quét mã QR để thanh toán</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="{% static 'app/images/qr-code-sample.png' %}" alt="QR code" class="img-fluid">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Cập nhật tổng số tiền và số lượng sản phẩm khi chọn checkbox hoặc thay đổi số lượng
+    function updateTotal() {
+        let total = 0;
+        let itemCount = 0;
+        document.querySelectorAll('.product-checkbox').forEach(function(checkbox, index) {
+            if (checkbox.checked) {
+                let quantity = document.querySelectorAll('.quantity')[index].value;
+                let price = checkbox.getAttribute('data-price');
+                total += price * quantity;
+                itemCount += parseInt(quantity);
+            }
+        });
+        document.getElementById('total-amount').innerHTML = total.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+        document.getElementById('item-count').innerHTML = itemCount;
+    }
+
+    // Lắng nghe sự kiện khi chọn sản phẩm hoặc thay đổi số lượng
+    document.querySelectorAll('.product-checkbox, .quantity').forEach(function(element) {
+        element.addEventListener('change', updateTotal);
+    });
+
+    // Hiển thị mã QR khi bấm nút "Thanh toán"
+    document.getElementById('checkout-button').addEventListener('click', function() {
+        $('#qrModal').modal('show');
+    });
+
+    // Cập nhật tổng số tiền khi tải trang
+    updateTotal();
+</script>
+
 {% endblock cart_content %}
